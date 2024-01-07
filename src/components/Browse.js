@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import Header from "./Header";
 
 const Browse = () => {
   return (
     <div>
-      Browse
+      <Header />
+      <div className="flex">
+        <p className=" m-28 text-black">Videos</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Browse
+export default Browse;
