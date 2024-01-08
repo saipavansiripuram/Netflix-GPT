@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 
-import { useNavigate } from "react-router-dom";
 import { addUser } from "../utils/userSlice";
 import {
   createUserWithEmailAndPassword,
@@ -11,10 +10,10 @@ import { useDispatch } from "react-redux";
 import Header from "./Header";
 import { auth } from "../utils/firebase";
 import { checkValidData } from "../utils/Validate";
+import { BACKGROUND, USER_AVATAR } from "../utils/constant";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const email = useRef(null);
   const password = useRef(null);
@@ -43,8 +42,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            photoURL:  USER_AVATAR ,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -56,12 +54,11 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error);
             });
-          console.log(user);
+          // console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -79,8 +76,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
+          // console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -100,14 +96,14 @@ const Login = () => {
       <div className="absolute w-full">
         <img
           className="w-full hidden md:block"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/c38a2d52-138e-48a3-ab68-36787ece46b3/eeb03fc9-99c6-438e-824d-32917ce55783/IN-en-20240101-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          src={BACKGROUND}
           alt="background"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent"></div>
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-11/12 md:w-3/12 absolute p-12 mx-auto my-36 right-0 left-0  bg-[rgba(0,0,0,.75)] bg-opacity-100 rounded-xl text-white"
+        className="w-11/12 md:w-3/12 absolute p-12 mx-auto  my-44 right-0 left-0  bg-[rgba(0,0,0,.75)] bg-opacity-100 rounded-xl text-white"
       >
         <h1 className="text-3xl text-white font-medium p-4">
           {isSignInForm ? "Sign In " : "Sign Up"}

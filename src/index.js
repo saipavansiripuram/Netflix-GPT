@@ -6,9 +6,12 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <App />
-  </React.StrictMode>
+  //</React.StrictMode>
+  // This stict mode makes everything twice 
+  // In local only happen twice 
+  // Build for production it doesn't happen
 );
 
 // If you want to start measuring performance in your app, pass a function
