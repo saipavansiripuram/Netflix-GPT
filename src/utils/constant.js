@@ -16,6 +16,6 @@ export const API_OPTIONS = {
   },
 };
 
-export const IMAGE_URL = "https://image.tmdb.org/t/p/original/";
+export const IMG_CDN_URL = "https://image.tmdb.org/t/p/original/";
 
-export const VIDEO_URL = "https://www.youtube.com/watch?v=";
+export const VIDEO_URL = "https://www.youtube.com/embed/";
