@@ -12,7 +12,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { LOGO, SUPPORTED_LANGUAGES } from "../utils/constant";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
-import GptSearch from "./GptSearch";
+
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -61,14 +61,14 @@ const Header = () => {
   };
   return (
     // <div className="absolute px-8 py-4 bg-gradient-to-b from-black z-10">
-    <div className="absolute w-screen px-8 py-6 z-10 bg-gradient-to-b from-black flex justify-between ">
-      <img className="w-44" src={LOGO} alt="logo" />
+    <div className="absolute w-screen px-8 py-6 z-10 bg-gradient-to-b from-black flex  flex-col md:flex-row items-center md:justify-between ">
+      <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="logo" />
 
       {user && (
-        <div className="flex p-2">
+        <div className="flex justify-between">
           {showGptSearch && (
             <select
-              className="p-2 m-2 bg-gray-900 text-white rounded-lg"
+              className=" hidden md:block p-2 m-2 bg-gray-900 text-white rounded-lg"
               onChange={handleLanguageChange}
             >
               {SUPPORTED_LANGUAGES.map((lang) => (
@@ -80,21 +80,21 @@ const Header = () => {
           )}
 
           <button
-            className="py-2 px-4 m-2 text-white bg-purple-400 rounded-lg"
+            className="py-1 md:py-2 px-2 md:px-4 mt-6 md:m-2 text-white bg-purple-400 rounded-lg"
             onClick={handleGptSearchClick}
           >
             {showGptSearch ? "Home " :" GPT Search"}
         
           </button>
 
-          <p className="m-2 text-white text-3xl">Hi ,{user.displayName}</p>
+          <p className="hidden md:block m-2 text-white text-3xl">Hi ,{user.displayName}</p>
           <img
-            className="w-12 mx-2 rounded-3xl "
+            className="w-12 mx-3 rounded-xl hidden md:block"
             src={user.photoURL}
             alt="usericon"
           />
           <button
-            className=" p-2 text-white rounded-lg"
+            className="mx-2 mt-6 md:mt-0 md:p-2 text-white rounded-lg"
             onClick={handleSignOut}
           >
             Signout

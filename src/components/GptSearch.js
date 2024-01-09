@@ -5,18 +5,20 @@ import { BACKGROUND } from '../utils/constant'
 
 const GptSearch = () => {
   return (
-    <div className=''>
-       <div className="absolute w-full -z-10">
+    <>
+    <div className="fixed w-full -z-10">
         <img
-          className="w-full hidden md:block"
+          className=" h-screen object-cover md:w-full"
           src={BACKGROUND}
           alt="background"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent"></div>
       </div>
+        <div className=''>
      <GptSearchBar/>
      <GptMovieSuggesions/>
     </div>
+    </>
   )
 }
 
