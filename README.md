@@ -1,4 +1,7 @@
 ## Netflix GPT 
+
+### Link : [link](https://netflixgpt-a.web.app/)
+
 - Create React App
 - Tailwind CSS
 - Header 
